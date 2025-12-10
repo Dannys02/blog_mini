@@ -8,6 +8,11 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
+  public function App()
+  {
+    $posts = Post::all();
+    return view("App", compact("posts"));
+  }
   /**
    * Display a listing of the resource.
    */
@@ -59,6 +64,12 @@ class PostsController extends Controller
   {
     $posts = Post::find($id);
     return view("pages.postsShow", compact("posts"));
+  }
+  
+  public function komentar(string $id)
+  {
+    $posts = Post::find($id);
+    return view("pages.comment", compact("posts"));
   }
 
   /**
