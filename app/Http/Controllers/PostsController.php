@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -16,6 +17,7 @@ class PostsController extends Controller
   /**
    * Display a listing of the resource.
    */
+   
   public function index()
   {
     $posts = Post::all();
@@ -54,7 +56,7 @@ class PostsController extends Controller
       "updated_at" => now(),
     ]);
 
-    return redirect("/post/index");
+    return redirect("/admin/post/index");
   }
 
   /**
@@ -104,7 +106,7 @@ class PostsController extends Controller
       "updated_at" => now(),
     ]);
 
-    return redirect("/post/index");
+    return redirect("/admin/post/index");
   }
 
   /**
@@ -114,6 +116,6 @@ class PostsController extends Controller
   {
     $posts = Post::find($id);
     $posts->delete();
-    return redirect("/post/index");
+    return redirect("/admin/post/index");
   }
 }

@@ -15,7 +15,7 @@
         </h1>
       </div>
 
-      <form action="/create/post" method="post">
+      <form action="/admin/create/post" method="post">
         @csrf
 
         <div class="mb-4">
@@ -66,7 +66,7 @@
   </div>
 <script>
   document.getElementById("index").addEventListener("click", () => {
-    window.location.href = "/post/index";
+    window.location.href = "/admin/post/index";
   });
 </script>
 </body>

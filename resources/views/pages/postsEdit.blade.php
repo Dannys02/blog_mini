@@ -29,7 +29,7 @@
         </h1>
       </div>
 
-      <form action="/post/update/{{ $posts->id }}" method="post">
+      <form action=/admin/post/update/{{ $posts->id }}" method="post">
         @csrf
         @method('PUT')
         <div class="mb-4">
@@ -68,7 +68,7 @@
           Perbarui
         </button>
         <a
-          href="/post/index"
+          href="/admin/post/index"
           class="py-2 px-6 bg-gray-400 hover:bg-gray-600 rounded-lg text-white font-semibold transition duration-200 shadow-md text-center"
           >
           Batal

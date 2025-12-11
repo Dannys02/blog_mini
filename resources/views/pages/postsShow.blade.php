@@ -12,7 +12,7 @@
   <div class="max-w-4xl mx-auto">
 
     <header class="mb-6 flex justify-between items-center">
-      <a href="/post/index"
+      <a href="/admin/post/index"
         class="inline-flex gap-2 items-center text-sm font-medium text-gray-600 hover:text-indigo-600 transition duration-150">
         <i class="fas fa-arrow-left"></i>
         <span>Kembali ke Daftar Post</span>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
-        <a href="/post/edit{{ $posts->id }}"
+        <a href="/admin/post/edit/{{ $posts->id }}"
           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition duration-150 shadow-md">
           Edit Postingan
         </a>

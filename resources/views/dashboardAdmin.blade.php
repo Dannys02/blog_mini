@@ -10,89 +10,11 @@
 </head>
 <body class="bg-gray-50 flex h-screen overflow-hidden">
 
-  <div id="sidebar" class="fixed h-screen left-[-100%] md:relative md:left-0 w-64 bg-white shadow-xl flex-shrink-0 flex flex-col transition-all duration-300 z-[30]">
-
-    <div class="bg-white p-6 border-b border-gray-100 flex items-center justify-center">
-      <i class="fas fa-feather-alt text-3xl text-indigo-600 mr-2"></i>
-      <span class="text-xl font-extrabold text-gray-800 tracking-wide">BLOG ADMIN</span>
-    </div>
-
-    <nav class="bg-white flex-grow p-4 space-y-2 overflow-y-auto sidebar-nav">
-
-      <h3 class="text-xs font-semibold uppercase text-gray-400 mt-4 mb-2 px-3">Main</h3>
-
-      <a href="#" class="flex items-center p-3 rounded-lg text-white bg-indigo-600 font-medium hover:bg-indigo-700 transition duration-150">
-        <i class="fas fa-home w-5 h-5 mr-3"></i>
-        Dashboard
-      </a>
-
-      <h3 class="text-xs font-semibold uppercase text-gray-400 mt-4 mb-2 px-3 pt-2 border-t border-gray-100">Content</h3>
-
-      <a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition duration-150">
-        <i class="fas fa-newspaper w-5 h-5 mr-3"></i>
-        Posts
-      </a>
-      <a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition duration-150">
-        <i class="fas fa-comments w-5 h-5 mr-3"></i>
-        Komentar
-      </a>
-      <a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition duration-150">
-        <i class="fas fa-user w-5 h-5 mr-3"></i>
-        Daftar Pengguna
-      </a>
-
-      <h3 class="text-xs font-semibold uppercase text-gray-400 mt-4 mb-2 px-3 pt-2 border-t border-gray-100">Settings</h3>
-
-      <a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition duration-150">
-        <i class="fas fa-users-cog w-5 h-5 mr-3"></i>
-        Users & Roles
-      </a>
-      <a href="#" class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition duration-150">
-        <i class="fas fa-cogs w-5 h-5 mr-3"></i>
-        General Settings
-      </a>
-
-      <div class="p-4 border-t border-gray-100">
-        <form action="/logout" method="post" class="w-full">
-          @csrf
-          <button type="submit" class="w-full flex items-center justify-center p-3 rounded-lg text-red-600 bg-red-50 hover:bg-red-100 font-medium transition duration-150 focus:outline-none">
-            <i class="fas fa-sign-out-alt w-5 h-5 mr-2"></i>
-            Logout
-          </button>
-        </form>
-      </div>
-
-    </nav>
-
-  </div>
+  @include('components.sidebar')
 
   <div class="flex-1 flex flex-col overflow-hidden">
 
-    <header class="w-full bg-indigo-400 shadow-sm p-4 flex items-center justify-between flex-shrink-0">
-
-      <div class="md:hidden">
-        <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none p-2 rounded-md flex items-center gap-4">
-          <div id="btnNav" class="space-y-1">
-            <span class="block w-6 h-1 bg-white rounded-2xl"></span>
-            <span class="block w-6 h-1 bg-white rounded-2xl"></span>
-            <span class="block w-6 h-1 bg-white rounded-2xl"></span>
-          </div>
-          <h1 class="md:hidden block text-xl font-semibold text-white">Dashboard Admin</h1>
-        </button>
-      </div>
-
-      <h1 class="hidden md:block text-2xl font-semibold text-white">Dashboard Admin</h1>
-
-      <div class="flex items-center space-x-4">
-        <button class="group p-2 rounded-full text-gray-500 hover:text-indigo-600 hover:bg-gray-100 transition duration-150">
-          <i class="fas fa-bell w-5 h-5 text-white group-hover:text-indigo-500"></i>
-        </button>
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 text-center leading-8 font-extrabold text-white bg-indigo-600 rounded-full object-cover">A</div>
-          <span class="text-sm font-medium text-white hidden sm:inline">Halo, Admin!</span>
-        </div>
-      </div>
-    </header>
+    @include('components.headerAdmin')
 
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
 
@@ -105,7 +27,7 @@
                 Total Artikel
               </p>
               <p class="text-3xl font-bold text-gray-900 mt-1">
-                0
+                {{ App\Models\Post::count() }}
               </p>
             </div>
             <div class="p-3 bg-indigo-100 rounded-full text-indigo-600">
@@ -121,7 +43,7 @@
                 Komentar
               </p>
               <p class="text-3xl font-bold text-gray-900 mt-1">
-                0
+                {{ App\Models\Comment::count() }}
               </p>
             </div>
             <div class="p-3 bg-green-100 rounded-full text-green-600">
@@ -137,7 +59,7 @@
                 Daftar pengguna
               </p>
               <p class="text-3xl font-bold text-gray-900 mt-1">
-                0
+                {{ App\Models\User::count() }}
               </p>
             </div>
             <div class="p-3 bg-yellow-100 rounded-full text-yellow-600">
@@ -160,54 +82,48 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-700">No</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-700">Judul</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-700 w-full">Konten</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-700">Action</th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody class="divide-y divide-gray-200">
+              @forelse ($posts as $p)
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Tips Terbaru Optimasi SEO Blog Tahun 2025
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                    SEO
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $loop->iteration }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-semibold">{{ $p->title }}</td>
+                <td class="px-6 py-4 text-sm text-gray-600 max-w-xs">
+                  <span class="truncate block">
+                    {{ $p->content }}
                   </span>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2.5K</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Published
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                  <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex items-center space-x-2">
+                  <a href="/admin/post/show/{{ $p->id }}" class="inline-flex justify-center items-center px-3 py-1 text-sm font-medium text-white bg-blue-500 hover:bg-indigo-700 rounded-full transition duration-150 shadow-md">
+                    Detail
+                  </a>
+                  <a href="/admin/post/edit/{{ $p->id }}" class="inline-flex justify-center items-center px-3 py-1 text-sm font-medium text-white bg-yellow-500 hover:bg-yellow-600 rounded-full transition duration-150 shadow-md">
+                    Edit
+                  </a>
+                  <form action="/admin/post/delete/{{ $p->id }}" method="post" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="inline-flex justify-center items-center px-3 py-1 text-sm font-medium text-white bg-red-500 hover:bg-red-700 rounded-full transition duration-150 shadow-md" onclick="return confirm('Apakah Anda yakin ingin menghapus post ini?')">
+                      Hapus
+                    </button>
+                  </form>
                 </td>
               </tr>
+              @empty
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  5 Resep Kopi Ala Barista yang Bisa Dibuat di Rumah
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                    Lifestyle
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.8K</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                    Draft
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                  <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                <td colspan="4" class="py-4">
+                  <h3 class="text-center text-lg font-semibold text-gray-900">Belum Ada Postingan</h3>
+                  <p class="text-center text-sm text-gray-500">
+                    Silakan buat postingan pertama Anda sekarang.
+                  </p>
                 </td>
               </tr>
+              @endforelse
             </tbody>
           </table>
         </div>
@@ -225,8 +141,8 @@
 
     document.addEventListener("click", function (e) {
     if(!sidebar.contains(e.target) && !btnNav.contains(e.target)) {
-      sidebar.classList.remove("left-0");
-      sidebar.classList.add("left-[-100%]");
+    sidebar.classList.remove("left-0");
+    sidebar.classList.add("left-[-100%]");
     }
     });
   </script>

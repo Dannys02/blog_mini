@@ -41,18 +41,19 @@ Route::prefix("admin")->group(function () {
   // ADMIN DASHBOARD (WAJIB ADMIN)
   Route::middleware("auth.admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
+
+    // POSTS CRUD
+    Route::get("/post/create", [PostsController::class, "create"]);
+    Route::post("/create/post", [PostsController::class, "store"]);
+    Route::get("/post/index", [PostsController::class, "index"]);
+    Route::get("/post/show/{id}", [PostsController::class, "show"]);
+    Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
+    Route::get("/post/edit/{id}", [PostsController::class, "edit"]);
+    Route::put("/post/update/{id}", [PostsController::class, "update"]);
+    Route::delete("/post/delete/{id}", [PostsController::class, "destroy"]);
+
     // LOGOUT ADMIN
     Route::post("/logout", [AdminAuthController::class, "logout"]);
   });
 });
-
-// POSTS CRUD
-Route::get("/create", [PostsController::class, "create"]);
-Route::post("/create/post", [PostsController::class, "store"]);
-Route::get("/post/index", [PostsController::class, "index"]);
-Route::get("/post/show/{id}", [PostsController::class, "show"]);
-Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
-Route::get("/post/edit/{id}", [PostsController::class, "edit"]);
-Route::put("/post/update/{id}", [PostsController::class, "update"]);
-Route::delete("/post/delete/{id}", [PostsController::class, "destroy"]);
 ?>
