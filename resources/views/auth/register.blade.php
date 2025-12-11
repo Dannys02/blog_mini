@@ -4,30 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Registet</title>
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body>
-  <form action="/register" method="post">
-    @csrf
-    <h1>Register</h1>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
+    <div class="text-center mb-8">
+      <i class="fas fa-user-plus text-4xl text-indigo-600 mb-2"></i>
+      <h1 class="text-3xl font-extrabold text-gray-900">Buat Akun Baru</h1>
+    </div>
     
-    <input type="text" name="name" value="{{ old("name") }}" placeholder="Name" /><br /><br />
-    @error("name")
-      <span>{{ $message }}</span><br /><br />
-    @enderror
-    
-    <input type="email" name="email" value="{{ old("email") }}" placeholder="Email" /><br /><br />
-    @error("email")
-      <span>{{ $message }}</span><br /><br />
-    @enderror
-    
-    <input type="password" name="password" value="{{ old("password") }}" placeholder="Password" /><br /><br />
-    @error("password")
-      <span>{{ $message }}</span><br /><br />
-    @enderror
-    
-    <button type="submit">Register</button>
-    <p>Punya akun?<a href="/login">Login sekarang</a></p>
-  </form>
+    <form action="/register" method="post" class="space-y-6">
+      @csrf
+      
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+        <div class="relative">
+          <input 
+            type="text" 
+            name="name" 
+            id="name"
+            value="{{ old("name") }}" 
+            placeholder="Nama Anda"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out pl-10"
+          />
+          <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        @error("name")
+          <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
+        @enderror
+      </div>
+      
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <div class="relative">
+          <input 
+            type="email" 
+            name="email" 
+            id="email"
+            value="{{ old("email") }}" 
+            placeholder="mail@example.com"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out pl-10"
+          />
+          <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        @error("email")
+          <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
+        @enderror
+      </div>
+      
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <div class="relative">
+          <input 
+            type="password" 
+            name="password" 
+            id="password"
+            value="{{ old("password") }}" 
+            placeholder="Minimal 5 karakter"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out pl-10"
+          />
+          <i class="fas fa-key absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        @error("password")
+          <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
+        @enderror
+      </div>
+      
+      <button 
+        type="submit" 
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
+      >
+        <i class="fas fa-user-plus mr-2 mt-1"></i> Register
+      </button>
+      
+      <p class="text-center text-sm text-gray-600">
+        Sudah punya akun? 
+        <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+          Login sekarang
+        </a>
+      </p>
+    </form>
+  </div>
 </body>
 </html>

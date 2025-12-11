@@ -30,6 +30,8 @@ Route::middleware("auth.user")->group(function () {
   Route::get("/dashboard", function () {
     return view("dashboardUser");
   });
+  
+  Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
 });
 
 // ADMIN AUTH
@@ -47,7 +49,6 @@ Route::prefix("admin")->group(function () {
     Route::post("/create/post", [PostsController::class, "store"]);
     Route::get("/post/index", [PostsController::class, "index"]);
     Route::get("/post/show/{id}", [PostsController::class, "show"]);
-    Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
     Route::get("/post/edit/{id}", [PostsController::class, "edit"]);
     Route::put("/post/update/{id}", [PostsController::class, "update"]);
     Route::delete("/post/delete/{id}", [PostsController::class, "destroy"]);
