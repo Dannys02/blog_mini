@@ -14,27 +14,19 @@ class PostsController extends Controller
     $posts = Post::all();
     return view("App", compact("posts"));
   }
-  /**
-   * Display a listing of the resource.
-   */
-   
+  
+  //Admin POSTS
   public function index()
   {
     $posts = Post::all();
     return view("pages.postsIndex", compact("posts"));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
   public function create()
   {
     return view("pages.postsCreate");
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
   public function store(Request $request)
   {
     $posts = $request->validate(
@@ -59,33 +51,24 @@ class PostsController extends Controller
     return redirect("/admin/post/index");
   }
 
-  /**
-   * Display the specified resource.
-   */
   public function show(string $id)
   {
     $posts = Post::find($id);
     return view("pages.postsShow", compact("posts"));
   }
-  
+
   public function komentar(string $id)
   {
     $posts = Post::find($id);
     return view("pages.comment", compact("posts"));
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   */
   public function edit(string $id)
   {
     $posts = Post::find($id);
     return view("pages.postsEdit", compact("posts"));
   }
 
-  /**
-   * Update the specified resource in storage.
-   */
   public function update(Request $request, string $id)
   {
     $posts = $request->validate(
@@ -106,16 +89,98 @@ class PostsController extends Controller
       "updated_at" => now(),
     ]);
 
-    return redirect("/admin/post/index");
+    return back();
   }
 
-  /**
-   * Remove the specified resource from storage.
-   */
   public function destroy(string $id)
   {
     $posts = Post::find($id);
     $posts->delete();
+    return back();
+  }
+  
+  
+  //USER POSTS
+  public function indexUser()
+  {
+    $posts = Post::all();
+    return view("pages.postsIndex", compact("posts"));
+  }
+
+  public function createUser()
+  {
+    return view("pages.postsCreate");
+  }
+
+  public function storeUser(Request $request)
+  {
+    $posts = $request->validate(
+      [
+        "title" => "required|max:255",
+        "content" => "required",
+      ],
+      [
+        "title.required" => "Judul harus diisi",
+        "title.max" => "Judul tidak boleh lebih 255 huruf",
+        "content.required" => "Konten harus diisi",
+      ]
+    );
+
+    DB::table("posts")->insert([
+      "title" => $posts["title"],
+      "content" => $posts["content"],
+      "created_at" => now(),
+      "updated_at" => now(),
+    ]);
+
     return redirect("/admin/post/index");
+  }
+
+  public function showUser(string $id)
+  {
+    $posts = Post::find($id);
+    return view("pages.postsShow", compact("posts"));
+  }
+
+  public function komentarUser(string $id)
+  {
+    $posts = Post::find($id);
+    return view("pages.comment", compact("posts"));
+  }
+
+  public function editUser(string $id)
+  {
+    $posts = Post::find($id);
+    return view("pages.postsEdit", compact("posts"));
+  }
+
+  public function updateUser(Request $request, string $id)
+  {
+    $posts = $request->validate(
+      [
+        "title" => "required|max:255",
+        "content" => "required",
+      ],
+      [
+        "title.required" => "Judul harus diisi",
+        "title.max" => "Judul tidak boleh lebih 255 huruf",
+        "content.required" => "Konten harus diisi",
+      ]
+    );
+
+    Post::where("id", $id)->update([
+      "title" => $posts["title"],
+      "content" => $posts["content"],
+      "updated_at" => now(),
+    ]);
+
+    return back();
+  }
+
+  public function destroyUser(string $id)
+  {
+    $posts = Post::find($id);
+    $posts->delete();
+    return back();
   }
 }

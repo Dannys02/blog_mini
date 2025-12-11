@@ -8,32 +8,37 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function showLogin()
-    {
-        return view("auth.loginAdmin");
+  public function showLogin()
+  {
+    return view("auth.loginAdmin");
+  }
+
+  public function login(Request $req)
+  {
+    $cred = $req->validate([
+      "email" => "required|email",
+      "password" => "required",
+    ]);
+
+    if (Auth::guard("admin")->attempt($cred)) {
+      $req->session()->regenerate();
+      return redirect("/admin/dashboard");
     }
 
-    public function login(Request $req)
-    {
-        $cred = $req->validate([
-            "email" => "required|email",
-            "password" => "required",
-        ]);
+    return back()->withErrors(["email" => "Email atau password salah"]);
+  }
 
-        if (Auth::guard("admin")->attempt($cred)) {
-            $req->session()->regenerate();
-            return redirect("/admin/dashboard");
-        }
+  public function logout(Request $req)
+{
+    Auth::guard('admin')->logout();
 
-        return back()->withErrors(["email" => "Email atau password salah"]);
-    }
+    $req->session()->invalidate();
+    $req->session()->regenerateToken();
 
-    public function logout(Request $req)
-    {
-        Auth::guard("admin")->logout();
-        $req->session()->invalidate();
-        $req->session()->regenerateToken();
+    // Hapus cookie guard admin
+    cookie()->queue(cookie()->forget('laravel_session'));
 
-        return redirect("/admin/login");
-    }
+    return redirect('/admin/login');
+}
+
 }

@@ -10,11 +10,12 @@ class EnsureAdminAuthenticated
 {
     public function handle(Request $request, Closure $next)
     {
-        // pastikan login via guard 'admin'
+        // Jika admin belum login
         if (!Auth::guard('admin')->check()) {
             return redirect('/admin/login');
         }
 
+        // Admin sudah login → lanjut
         return $next($request);
     }
 }

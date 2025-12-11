@@ -9,7 +9,8 @@ class EnsureUserAuthenticated
 {
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
+        // Jika admin belum login
+        if (!Auth::guard('user')->check()) {
             return redirect('/login');
         }
 

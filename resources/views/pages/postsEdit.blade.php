@@ -68,7 +68,7 @@
           Perbarui
         </button>
         <a
-          href="/admin/post/index"
+          href="{{ url()->previous() }}"
           class="py-2 px-6 bg-gray-400 hover:bg-gray-600 rounded-lg text-white font-semibold transition duration-200 shadow-md text-center"
           >
           Batal

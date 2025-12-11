@@ -12,9 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
   )
   ->withMiddleware(function (Middleware $middleware) {
     $middleware->alias([
-      "auth.admin" => \App\Http\Middleware\EnsureAdminAuthenticated::class,
-      "auth.user" => \App\Http\Middleware\EnsureUserAuthenticated::class,
-    ]);
+    "auth.admin" => \App\Http\Middleware\EnsureAdminAuthenticated::class,
+    "auth.user" => \App\Http\Middleware\EnsureUserAuthenticated::class,
+    "guest.admin" => \App\Http\Middleware\RedirectIfAuthenticatedAdmin::class,
+    "guest.user" => \App\Http\Middleware\RedirectIfAuthenticatedUser::class,
+]);
+
   })
 
   ->withExceptions(function (Exceptions $exceptions): void {

@@ -7,42 +7,45 @@ use App\Http\Controllers\AuthController as UserAuthController;
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\UserController;
 
 Route::get("/", [PostsController::class, "App"]);
 
 // USER AUTH
-Route::get("/login", [UserAuthController::class, "showLogin"]);
-Route::post("/login", [UserAuthController::class, "login"]);
-
-Route::get("/register", [UserAuthController::class, "showRegister"]);
-Route::post("/register", [UserAuthController::class, "register"]);
-
-Route::get("/forget-password", [
-  UserAuthController::class,
-  "showForgetPassword",
-]);
-Route::post("/forget-password", [UserAuthController::class, "sendResetToken"]);
-
-Route::post("/logout", [UserAuthController::class, "logout"]);
+Route::middleware("guest.user")->group(function () {
+  Route::get("/login", [UserAuthController::class, "showLogin"]);
+  Route::post("/login", [UserAuthController::class, "login"]);
+  Route::get("/register", [UserAuthController::class, "showRegister"]);
+  Route::post("/register", [UserAuthController::class, "register"]);
+  Route::get("/forget-password", [
+    UserAuthController::class,
+    "showForgetPassword",
+  ]);
+  Route::post("/forget-password", [
+    UserAuthController::class,
+    "sendResetToken",
+  ]);
+});
 
 // USER DASHBOARD (LOGIN WAJIB)
 Route::middleware("auth.user")->group(function () {
-  Route::get("/dashboard", function () {
-    return view("dashboardUser");
-  });
-  
+  Route::get("/dashboard", [UserController::class, "index"]);
+
   Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
+  Route::post("/logout", [UserAuthController::class, "logout"]);
 });
 
 // ADMIN AUTH
 Route::prefix("admin")->group(function () {
-  // LOGIN ADMIN
-  Route::get("/login", [AdminAuthController::class, "showLogin"]);
-  Route::post("/login", [AdminAuthController::class, "login"]);
+  Route::middleware("guest.admin")->group(function () {
+    Route::get("/login", [AdminAuthController::class, "showLogin"]);
+    Route::post("/login", [AdminAuthController::class, "login"]);
+  });
 
   // ADMIN DASHBOARD (WAJIB ADMIN)
   Route::middleware("auth.admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
+    Route::get("/list-user", [DashboardController::class, "listuser"]);
 
     // POSTS CRUD
     Route::get("/post/create", [PostsController::class, "create"]);

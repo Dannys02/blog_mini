@@ -9,11 +9,15 @@ class DashboardController extends Controller
 {
   public function index()
   {
-    // Data hanya bakal tertampil satu hari penuh, setelah itu tidak tampil
+    // Data Post hanya bakal tertampil satu hari penuh, setelah itu tidak tampil
     $posts = Post::whereDate("created_at", today())
       ->latest()
       ->get();
 
     return view("dashboardAdmin", compact("posts"));
+  }
+  
+  public function listuser() {
+    return view("pages.listUser");
   }
 }

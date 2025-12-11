@@ -4,124 +4,190 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <title>Website Blog Dannys Martha F</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Blog Dannys Martha F | Minimalist</title>
   <style>
     * {
       scroll-behavior: smooth;
     }
   </style>
 </head>
-<body class="bg-white min-h-screen font-sans">
+<body class="bg-gray-50 min-h-screen font-sans text-gray-800">
+
   @include('components.navbar')
+
   <div id="overlay" class="z-[20] fixed inset-0 bg-black opacity-50 hidden transition-all duration-300"></div>
 
   <div id="main">
-    <div class="pt-[120px] pb-24 text-center bg-indigo-600">
-      <i class="fa fa-home text-white text-3xl mb-2"></i>
-      <h1 class="text-white text-2xl font-bold">Selamat datang di Website Blog Mini</h1>
-      <p class="text-gray-200">
-        Tulis konten tentang sesuatu di sini :)
-      </p>
-    </div>
+    
+    <header class="pt-40 pb-28 text-center bg-indigo-600 shadow-xl">
+      <div class="container mx-auto px-4">
+        <i class="fa fa-pencil-ruler text-indigo-200 text-5xl mb-4 animate-bounce-slow"></i>
+        <h1 class="text-white text-4xl sm:text-5xl font-extrabold tracking-tight mb-2">
+          Selamat Datang di Blog Mini
+        </h1>
+        <p class="text-indigo-200 text-lg max-w-2xl mx-auto">
+          Tempat berbagi pemikiran, ide, dan cerita. Mari kita menulis konten yang bermakna!
+        </p>
+      </div>
+    </header>
 
-    <section id="artikel" class="text-2xl font-bold text-center bg-white p-6">
-      <h1 class="mb-4">Artikel</h1>
-      <h3 class="text-lg text-start mb-3 text-gray-800">Kumpulan artikel publik :</h3>
-      <div class="bg-white rounded-2xl shadow-2xl py-6 px-2">
-        <div class="p-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <section id="artikel" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
+          <span class="text-indigo-600">Artikel</span> Terbaru
+        </h2>
+        
+        <h3 class="text-xl font-semibold text-start text-gray-700 mb-6 border-l-4 border-indigo-600 pl-3">
+          <i class="fa fa-list-alt mr-2 text-indigo-500"></i> Kumpulan Artikel Publik
+        </h3>
+        
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           @forelse ($posts as $p)
-          <div class="p-5 bg-white shadow-lg rounded-2xl border border-gray-200 mx-auto transition duration-300 hover:shadow-xl h-fit">
+          <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6 transition duration-300 hover:shadow-2xl hover:border-indigo-200 h-full flex flex-col">
+            <div class="flex-grow">
+              <div class="border-b border-gray-200 mb-4 pb-4">
+                <h4 class="font-bold text-xl text-gray-900 tracking-tight leading-snug mb-2">
+                  {{ $p->title }}
+                </h4>
+                <p class="text-xs text-gray-500 font-medium">
+                  <i class="fa fa-calendar-alt mr-1"></i> Dibuat: {{ $p->created_at->format("d F Y") }}
+                </p>
+              </div>
 
-            <div class="border-b border-gray-300 mb-4 w-full pb-3">
-              <h4 class="font-bold text-xl text-gray-800 text-start tracking-tight">
-                {{ $p->title }}
-              </h4>
-              <p class="text-sm text-gray-500 text-start mt-1">
-                Dibuat : {{ $p->created_at->format("d F Y") }}
-              </p>
+              <div class="mb-4">
+                <h4 class="font-semibold text-sm text-indigo-600 mb-2 uppercase tracking-wider">Konten Singkat:</h4>
+                <p class="text-gray-700 text-sm bg-indigo-50 rounded-lg p-3 leading-relaxed border border-indigo-200 overflow-hidden max-h-32">
+                  {{ $p->content }}
+                </p>
+              </div>
             </div>
 
-            <div class="mb-2">
-              <h4 class="font-semibold text-sm text-gray-700 text-start mb-2 uppercase tracking-wide">Isi Konten :</h4>
-              <p class="text-gray-800 text-start text-sm border border-gray-300 bg-gray-50 rounded-lg p-3 leading-relaxed">
-                {{ $p->content }}
-              </p>
-            </div>
-
-            <div class="flex justify-start mt-4">
-              <a href="/post/komentar/{{ $p->id }}" class="inline-flex justify-center items-center px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-full transition duration-300 shadow-md shadow-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                <i class="fa fa-comment mr-2"></i> komentar...
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <a href="/post/komentar/{{ $p->id }}" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-full transition duration-300 shadow-md shadow-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <i class="fa fa-comment mr-2"></i> Baca & Komentar
               </a>
             </div>
           </div>
-
           @empty
-          <p class="text-center my-2">
-            Artikel tidak ada.
-          </p>
+          <div class="md:col-span-3 text-center py-12 bg-gray-50 rounded-lg border-dashed border-2 border-gray-300">
+            <i class="fa fa-exclamation-circle text-4xl text-gray-400 mb-3"></i>
+            <p class="text-lg text-gray-500 font-medium">Artikel tidak tersedia saat ini.</p>
+          </div>
           @endforelse
         </div>
       </div>
     </section>
+    
+    <section id="about" class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
+          <span class="text-indigo-600">Tentang</span> Kami
+        </h2>
+        <div class="bg-white p-8 sm:p-12 rounded-xl shadow-lg border border-gray-100 flex flex-col md:flex-row items-center gap-8">
+          <div class="text-center md:text-left">
+            <i class="fa fa-lightbulb text-5xl text-indigo-500 mb-4"></i>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Website Blog Mini ini dibangun oleh **Dannys Martha F** sebagai wadah sederhana untuk berekspresi dan berbagi pengetahuan. Kami percaya bahwa berbagi ide, sekecil apapun, dapat menciptakan dampak positif. Fokus kami adalah konten yang ringkas, mudah dibaca, dan bermanfaat.
+            </p>
+            <p class="mt-4 text-sm text-gray-500 italic">
+              "Kekuatan sebuah ide terletak pada pembagiannya."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
+          <span class="text-indigo-600">Hubungi</span> Kami
+        </h2>
+        <div class="bg-gray-50 p-8 sm:p-12 rounded-xl shadow-lg border border-gray-100">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+            <div class="p-6 bg-white rounded-lg border border-indigo-200 shadow-md">
+              <i class="fa fa-envelope text-3xl text-indigo-600 mb-3"></i>
+              <h4 class="text-xl font-semibold text-gray-800">Email</h4>
+              <p class="text-gray-600 mt-1">dannys.martha.f@example.com</p>
+              <a href="mailto:dannys.martha.f@example.com" class="mt-3 inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800">
+                Kirim Pesan <i class="fa fa-arrow-right ml-1 text-xs"></i>
+              </a>
+            </div>
+            <div class="p-6 bg-white rounded-lg border border-indigo-200 shadow-md">
+              <i class="fa fa-share-alt text-3xl text-indigo-600 mb-3"></i>
+              <h4 class="text-xl font-semibold text-gray-800">Media Sosial</h4>
+              <p class="text-gray-600 mt-1">Temukan kami di platform favorit Anda.</p>
+              <div class="mt-3 space-x-4">
+                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
+  
+  @include('components.footer')
 
-  <ul id="navbarPhone" class="md:hidden w-full fixed bottom-[-100%] flex flex-col justify-center items-center py-4 bg-white shadow-black shadow-2xl space-y-6 transition-all duration-300 ease-in-out z-[30]">
-    <li class="w-full flex px-6">
-      <a href="#" class="group text-black bg-white text-center w-full transition-all duration-300 hover:bg-indigo-600 hover:text-white py-2 px-4 rounded-3xl">
-        <i class="fa fa-home text-lg mr-1 text-black group-hover:text-white transition-all"></i> Home
-      </a>
-    </li>
+  <div id="navbarPhone" class="md:hidden w-full fixed bottom-[-100%] flex flex-col p-6 bg-white shadow-[0_-5px_15px_rgba(0,0,0,0.1)] space-y-4 transition-all duration-500 ease-in-out z-[30] rounded-t-2xl">
+    <h3 class="text-xl font-bold text-gray-900 text-center border-b pb-3 border-gray-200">Navigasi</h3>
+    <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+      <i class="fa fa-home text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Home
+    </a>
+    <a href="#artikel" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+      <i class="fa fa-newspaper text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Artikel
+    </a>
+    <a href="#about" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+      <i class="fa fa-info-circle text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Tentang
+    </a>
+    <a href="#contact" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+      <i class="fa fa-envelope text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Kontak
+    </a>
 
-    <li class="w-full flex px-6">
-      <a href="#artikel" class="group text-black bg-white text-center w-full transition-all duration-300 hover:bg-indigo-600 hover:text-white py-2 px-4 rounded-3xl">
-        <i class="fa fa-newspaper text-lg mr-1 text-black group-hover:text-white transition-all"></i> Artikel
+    <div class="pt-4 border-t border-gray-200 space-y-3">
+      <a href="/login" class="w-full flex justify-center items-center py-3 px-4 bg-indigo-600 text-white rounded-lg font-bold shadow-md hover:bg-indigo-700 transition duration-300">
+        <i class="fa fa-sign-in-alt mr-2"></i> Login
       </a>
-    </li>
-
-    <li class="w-full flex px-6">
-      <a href="#about" class="group text-black bg-white text-center w-full transition-all duration-300 hover:bg-indigo-600 hover:text-white py-2 px-4 rounded-3xl">
-        <i class="fa fa-info-circle text-lg mr-1 text-black group-hover:text-white transition-all"></i> Tentang
+      <a href="/register" class="w-full flex justify-center items-center py-3 px-4 bg-white text-indigo-600 border border-indigo-600 rounded-lg font-bold shadow-md hover:bg-indigo-50 transition duration-300">
+        <i class="fa fa-user-plus mr-2"></i> Daftar
       </a>
-    </li>
-
-    <li class="w-full flex px-6">
-      <a href="#contact" class="group text-black bg-white text-center w-full transition-all duration-300 hover:bg-indigo-600 hover:text-white py-2 px-4 rounded-3xl">
-        <i class="fa fa-envelope text-lg mr-1 text-black group-hover:text-white transition-all"></i> Kontak
-      </a>
-    </li>
-
-    <li class="w-full flex px-6">
-      <a href="/login" class="w-full border-2 border-indigo-500 text-center py-2 px-4 bg-indigo-600 text-white rounded-xl">
-        <i class="fa fa-sign-in"></i> Login
-      </a>
-    </li>
-
-    <li class="w-full flex px-6">
-      <a href="/register" class="w-full text-black text-center py-2 px-4 bg-transparent border-2 border-indigo-300 rounded-xl transition-all duration-300 hover:border-indigo-500 hover:bg-indigo-600 hover:text-white">
-        <i class="fa fa-user-plus"></i> Daftar
-      </a>
-    </li>
-  </ul>
+    </div>
+  </div>
 
   <script>
     const btnNav = document.getElementById("btnNav");
     const navPhone = document.getElementById("navbarPhone");
     const overlay = document.getElementById("overlay");
 
-    btnNav.addEventListener("click", function () {
-    navPhone.classList.toggle("bottom-[-100%]");
-    navPhone.classList.toggle("bottom-0");
-    overlay.classList.toggle("hidden");
+    function toggleMenu() {
+        navPhone.classList.toggle("bottom-[-100%]");
+        navPhone.classList.toggle("bottom-0");
+        overlay.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden"); // Tambahkan ini untuk mencegah scroll body saat menu terbuka
+    }
+
+    btnNav.addEventListener("click", toggleMenu);
+
+    overlay.addEventListener("click", toggleMenu);
+
+    // Menutup menu saat link di dalam menu diklik
+    navPhone.querySelectorAll('a[href^="#"], a[href^="/login"], a[href^="/register"]').forEach(link => {
+        link.addEventListener('click', () => {
+            if (!navPhone.classList.contains("bottom-[-100%]")) {
+                toggleMenu();
+            }
+        });
     });
 
-    document.addEventListener("click", function (e) {
-    if (!navPhone.contains(e.target) && !btnNav.contains(e.target)) {
-    navPhone.classList.add("bottom-[-100%]");
-    navPhone.classList.remove("bottom-0");
-    overlay.classList.add("hidden");
-    }
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !navPhone.classList.contains("bottom-[-100%]")) {
+            toggleMenu();
+        }
     });
+
   </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
   <div class="max-w-4xl mx-auto">
 
     <header class="mb-6 flex justify-between items-center">
-      <a href="/admin/post/index"
+      <a href="{{ url()->previous() }}"
         class="inline-flex gap-2 items-center text-sm font-medium text-gray-600 hover:text-indigo-600 transition duration-150">
         <i class="fas fa-arrow-left"></i>
         <span>Kembali ke Daftar Post</span>

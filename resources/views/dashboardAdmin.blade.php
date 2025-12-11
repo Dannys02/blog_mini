@@ -73,7 +73,7 @@
       <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
         <div class="p-6 flex justify-between items-center border-b border-gray-100">
           <h2 class="text-xl font-semibold text-gray-800">Postingan Blog Terbaru</h2>
-          <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center">
+          <a href="/admin/post/index" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center">
             Semua Posts <i class="fas fa-arrow-right ml-1 text-xs"></i>
           </a>
         </div>
