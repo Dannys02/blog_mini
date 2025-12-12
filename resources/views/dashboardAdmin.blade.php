@@ -4,17 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin Dashboard | Blog Mini</title>
+  <title>Admin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="bg-gray-50 flex h-screen overflow-hidden">
-
+<body class="bg-gray-50 flex h-screen">
   @include('components.sidebar')
 
   <div class="flex-1 flex flex-col overflow-hidden">
 
-    @include('components.headerAdmin')
+    @include('components.header')
 
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
 
@@ -130,21 +129,9 @@
       </div>
 
     </main>
+
+    @include('components.footer')
+
   </div>
-
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    document.getElementById("btnNav").addEventListener("click", function () {
-    sidebar.classList.toggle("left[-100%]")
-    sidebar.classList.toggle("left-0");
-    });
-
-    document.addEventListener("click", function (e) {
-    if(!sidebar.contains(e.target) && !btnNav.contains(e.target)) {
-    sidebar.classList.remove("left-0");
-    sidebar.classList.add("left-[-100%]");
-    }
-    });
-  </script>
 </body>
 </html>

@@ -53,12 +53,12 @@
           >
           Kirim Post
         </button>
-        <button
+        <button onClick="window.history.back"
           id="index"
           type="button"
           class="py-2 px-4 bg-blue-500 hover:bg-indigo-600 rounded-lg text-white font-semibold transition duration-200 shadow-md"
           >
-           Index
+           Kembali
         </button>
       </div>
     </form>

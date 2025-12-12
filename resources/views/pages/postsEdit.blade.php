@@ -29,7 +29,7 @@
         </h1>
       </div>
 
-      <form action=/admin/post/update/{{ $posts->id }}" method="post">
+      <form action="/admin/post/update/{{ $posts->id }}" method="post">
         @csrf
         @method('PUT')
         <div class="mb-4">

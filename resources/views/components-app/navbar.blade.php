@@ -11,8 +11,8 @@
         <ul class="flex items-center space-x-4">
           <li><a href="/#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Home</a></li>
           <li><a href="/#artikel" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Artikel</a></li>
-          <li><a href="/#about" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Tentang</a></li>
-          <li><a href="/#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Kontak</a></li>
+          <li><a href="/#tentang" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Tentang</a></li>
+          <li><a href="/#kontak" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Kontak</a></li>
         </ul>
 
         <div class="border-l border-gray-200 pl-6 space-x-4">

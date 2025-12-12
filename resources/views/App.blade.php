@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <title>Blog Dannys Martha F | Minimalist</title>
+  <title>Website Blog</title>
   <style>
     * {
       scroll-behavior: smooth;
@@ -14,7 +14,7 @@
 </head>
 <body class="bg-gray-50 min-h-screen font-sans text-gray-800">
 
-  @include('components.navbar')
+  @include('components-app.navbar')
 
   <div id="overlay" class="z-[20] fixed inset-0 bg-black opacity-50 hidden transition-all duration-300"></div>
 
@@ -79,7 +79,7 @@
       </div>
     </section>
     
-    <section id="about" class="py-16 md:py-24 bg-gray-50">
+    <section id="tentang" class="py-16 md:py-24 bg-gray-50">
       <div class="container mx-auto px-4 max-w-4xl">
         <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
           <span class="text-indigo-600">Tentang</span> Kami
@@ -88,7 +88,7 @@
           <div class="text-center md:text-left">
             <i class="fa fa-lightbulb text-5xl text-indigo-500 mb-4"></i>
             <p class="text-lg text-gray-700 leading-relaxed">
-              Website Blog Mini ini dibangun oleh **Dannys Martha F** sebagai wadah sederhana untuk berekspresi dan berbagi pengetahuan. Kami percaya bahwa berbagi ide, sekecil apapun, dapat menciptakan dampak positif. Fokus kami adalah konten yang ringkas, mudah dibaca, dan bermanfaat.
+              Website Blog Mini ini dibangun oleh Dannys Martha F sebagai wadah sederhana untuk berekspresi dan berbagi pengetahuan. Kami percaya bahwa berbagi ide, sekecil apapun, dapat menciptakan dampak positif. Fokus kami adalah konten yang ringkas, mudah dibaca, dan bermanfaat.
             </p>
             <p class="mt-4 text-sm text-gray-500 italic">
               "Kekuatan sebuah ide terletak pada pembagiannya."
@@ -98,7 +98,7 @@
       </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-24 bg-white">
+    <section id="kontak" class="py-16 md:py-24 bg-white">
       <div class="container mx-auto px-4 max-w-4xl">
         <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12">
           <span class="text-indigo-600">Hubungi</span> Kami
@@ -119,8 +119,8 @@
               <p class="text-gray-600 mt-1">Temukan kami di platform favorit Anda.</p>
               <div class="mt-3 space-x-4">
                 <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
-                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-tiktok text-xl"></i></a>
+                <a href="#" class="text-indigo-500 hover:text-indigo-700 transition duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@
 
   </div>
   
-  @include('components.footer')
+  @include('components-app.footer')
 
   <div id="navbarPhone" class="md:hidden w-full fixed bottom-[-100%] flex flex-col p-6 bg-white shadow-[0_-5px_15px_rgba(0,0,0,0.1)] space-y-4 transition-all duration-500 ease-in-out z-[30] rounded-t-2xl">
     <h3 class="text-xl font-bold text-gray-900 text-center border-b pb-3 border-gray-200">Navigasi</h3>
@@ -140,10 +140,10 @@
     <a href="#artikel" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
       <i class="fa fa-newspaper text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Artikel
     </a>
-    <a href="#about" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+    <a href="#tentang" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
       <i class="fa fa-info-circle text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Tentang
     </a>
-    <a href="#contact" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
+    <a href="#kontak" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
       <i class="fa fa-envelope text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Kontak
     </a>
 
@@ -170,10 +170,8 @@
     }
 
     btnNav.addEventListener("click", toggleMenu);
-
     overlay.addEventListener("click", toggleMenu);
-
-    // Menutup menu saat link di dalam menu diklik
+    
     navPhone.querySelectorAll('a[href^="#"], a[href^="/login"], a[href^="/register"]').forEach(link => {
         link.addEventListener('click', () => {
             if (!navPhone.classList.contains("bottom-[-100%]")) {

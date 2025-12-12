@@ -45,7 +45,7 @@ Route::prefix("admin")->group(function () {
   // ADMIN DASHBOARD (WAJIB ADMIN)
   Route::middleware("auth.admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
-    Route::get("/list-user", [DashboardController::class, "listuser"]);
+    Route::get("/list-user", [UserAuthController::class, "showUser"]);
 
     // POSTS CRUD
     Route::get("/post/create", [PostsController::class, "create"]);

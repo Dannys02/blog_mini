@@ -16,8 +16,4 @@ class DashboardController extends Controller
 
     return view("dashboardAdmin", compact("posts"));
   }
-  
-  public function listuser() {
-    return view("pages.listUser");
-  }
 }

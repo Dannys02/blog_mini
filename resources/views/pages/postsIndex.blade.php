@@ -6,10 +6,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<body class="bg-gray-50 flex h-screen font-sans">
   @include('components.sidebar')
+
   <div class="flex-1 flex flex-col overflow-hidden">
-    @include('components.headerAdmin')
+
+    @include('components.header')
+
     <div class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
       <header class="mb-8 lg:mb-12 border-b border-gray-300 pb-4">
         <h1 class="text-dark-text text-3xl font-extrabold tracking-tight text-center">
@@ -20,10 +23,11 @@
         </p>
       </header>
 
-      <div class="flex w-full mb-2">
-        <a href="/admin/post/create" class="px-4 py-1 text-white text-center rounded-xl bg-blue-600">
+      <div class="flex items-center justify-between w-full space-x-4 mb-4">
+        <a href="/admin/post/create" class="px-4 py-1 text-sm font-medium text-gray-600 hover:text-indigo-600 text-center rounded-2xl bg-transparent transition duration-150 ease-in-out flex-shrink-0">
           + Buat
         </a>
+        @include('components.searchDataAdmin')
       </div>
 
       <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
@@ -40,8 +44,12 @@
             <tbody class="divide-y divide-gray-200">
               @forelse ($posts as $p)
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $loop->iteration }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-semibold">{{ $p->title }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {{ $loop->iteration }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-semibold">
+                  {{ $p->title }}
+                </td>
                 <td class="px-6 py-4 text-sm text-gray-600 max-w-xs">
                   <span class="truncate block">
                     {{ $p->content }}
@@ -78,21 +86,9 @@
         </div>
       </div>
     </div>
+
+    @include('components.footer')
+
   </div>
-
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    document.getElementById("btnNav").addEventListener("click", function () {
-    sidebar.classList.toggle("left[-100%]")
-    sidebar.classList.toggle("left-0");
-    });
-
-    document.addEventListener("click", function (e) {
-    if(!sidebar.contains(e.target) && !btnNav.contains(e.target)) {
-    sidebar.classList.remove("left-0");
-    sidebar.classList.add("left-[-100%]");
-    }
-    });
-  </script>
 </body>
 </html>
