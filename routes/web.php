@@ -1,10 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
-
 use App\Http\Controllers\AuthController as UserAuthController;
-
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
@@ -30,7 +27,6 @@ Route::middleware("guest.user")->group(function () {
 // USER DASHBOARD (LOGIN WAJIB)
 Route::middleware("auth.user")->group(function () {
   Route::get("/dashboard", [UserController::class, "index"]);
-
   Route::get("/post/komentar/{id}", [PostsController::class, "komentar"]);
   Route::post("/logout", [UserAuthController::class, "logout"]);
 });
@@ -45,7 +41,8 @@ Route::prefix("admin")->group(function () {
   // ADMIN DASHBOARD (WAJIB ADMIN)
   Route::middleware("auth.admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
-    Route::get("/list-user", [UserAuthController::class, "showUser"]);
+    Route::get("/comment-user", [DashboardController::class, "commentUser"]);
+    Route::get("/list-user", [DashboardController::class, "showUser"]);
 
     // POSTS CRUD
     Route::get("/post/create", [PostsController::class, "create"]);

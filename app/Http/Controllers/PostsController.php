@@ -15,7 +15,6 @@ class PostsController extends Controller
     return view("App", compact("posts"));
   }
   
-  //Admin POSTS
   public function index()
   {
     $posts = Post::all();

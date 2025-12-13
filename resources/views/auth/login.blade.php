@@ -61,8 +61,8 @@
         <i class="fas fa-sign-in-alt mr-2 mt-1"></i> Login
       </button>
       
-      <div class="text-center text-sm">
-        <p class="text-gray-600">
+      <div class="text-start text-sm">
+        <p>
           Tidak punya akun? 
           <a href="/register" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
             Register sekarang

@@ -29,7 +29,7 @@
         
         <div class="bg-indigo-100 p-6 rounded-xl shadow-lg border border-indigo-200 mb-8">
           <h2 class="text-2xl font-extrabold text-indigo-800 flex items-center">
-            <i class="fa fa-hand-wave mr-3 text-3xl"></i> Selamat Datang Kembali, {{ Auth::guard('user')->user()->name }}!
+            <i class="fa fa-hand-wave mr-3 text-3xl"></i> Selamat Datang, {{ Auth::guard('user')->user()->name }}!
           </h2>
           <p class="text-indigo-700 mt-2">
             Lihat statistik tulisan Anda dan kelola akun Anda di sini.

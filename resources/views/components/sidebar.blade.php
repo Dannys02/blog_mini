@@ -9,7 +9,7 @@
 
     <h3 class="text-xs font-semibold uppercase text-gray-400 mt-4 mb-2 px-3">UTAMA</h3>
 
-    <a href="/admin/dashboard" class="flex items-center p-3 rounded-lg text-white bg-indigo-600 font-semibold hover:bg-indigo-700 transition duration-150 shadow-md shadow-indigo-500/50">
+    <a href="/admin/dashboard" class="flex items-center p-3 rounded-lg text-gray-700 font-semibold hover:text-indigo-600 hover:bg-indigo-50 transition duration-150">
       <i class="fas fa-home w-5 h-5 mr-3"></i>
       Dashboard
     </a>
@@ -20,7 +20,7 @@
       <i class="fas fa-newspaper w-5 h-5 mr-3"></i>
       Posts
     </a>
-    <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition duration-150">
+    <a href="/admin/comment-user" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition duration-150">
       <i class="fas fa-comments w-5 h-5 mr-3"></i>
       Komentar
     </a>

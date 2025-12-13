@@ -82,11 +82,6 @@ class AuthController extends Controller
   {
     return back()->with("msg", "Dummy reset password — nanti bisa dipoles");
   }
-  
-  public function showUser() {
-    $user = User::all();
-    return view("pages.listUser", compact("user"));
-  }
 
   public function logout(Request $req)
   {

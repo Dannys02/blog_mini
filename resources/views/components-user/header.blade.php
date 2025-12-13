@@ -6,7 +6,7 @@
 
     <h1 class="text-xl md:text-2xl font-bold text-gray-800">Dashboard</h1>
 
-    <a href="/user/articles/create" class="flex items-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 hidden sm:flex">
+    <a href="#" class="flex items-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 hidden sm:flex">
       <i class="fa fa-plus-circle mr-2"></i> Tulis Artikel Baru
     </a>
   </div>
