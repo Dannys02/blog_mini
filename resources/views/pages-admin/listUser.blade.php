@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gray-50 flex h-screen font-sans">
-  @include('components.sidebar')
+  @include('components-admin.sidebar')
 
   <div class="flex-1 flex flex-col overflow-hidden">
 
-    @include('components.header')
+    @include('components-admin.header')
 
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-4 md:p-8">
 
@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        @foreach ($user as $u)
+        @forelse ($user as $u)
         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4 transition duration-300 hover:shadow-md hover:border-indigo-300 md:grid md:grid-cols-6 md:gap-4 md:items-center">
 
           <div class="col-span-1 flex items-center space-x-3 mb-2 md:mb-0">
@@ -78,14 +78,14 @@
             </p>
           </div>
         </div>
-        @endforeach
+        @empty
+        <p class="text-center p-2 text-gray-700">Tidak ada data.</p>
+        @endforelse
 
       </div>
-
     </main>
 
-    @include('components.footer')
-
+    @include('components-admin.footer')
   </div>
 
   <script>

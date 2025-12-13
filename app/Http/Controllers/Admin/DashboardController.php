@@ -22,12 +22,12 @@ class DashboardController extends Controller
   public function commentUser()
   {
     $comment = Comment::all();
-    return view("pages.comment", compact("comment"));
+    return view("pages-admin.comment", compact("comment"));
   }
 
   public function showUser()
   {
     $user = User::all();
-    return view("pages.listUser", compact("user"));
+    return view("pages-admin.listUser", compact("user"));
   }
 }

@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gray-50 flex h-screen font-sans">
-  @include('components.sidebar')
+  @include('components-admin.sidebar')
 
   <div class="flex-1 flex flex-col overflow-hidden">
 
-    @include('components.header')
+    @include('components-admin.header')
 
     <div class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
       <header class="mb-8 lg:mb-12 border-b border-gray-300 pb-4">
@@ -27,7 +27,7 @@
         <a href="/admin/post/create" class="px-4 py-1 text-sm font-medium text-gray-600 hover:text-indigo-600 text-center rounded-2xl bg-transparent transition duration-150 ease-in-out flex-shrink-0">
           + Buat
         </a>
-        @include('components.searchDataAdmin')
+        @include('components-admin.searchDataAdmin')
       </div>
 
       <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    @include('components.footer')
+    @include('components-admin.footer')
 
   </div>
 </body>

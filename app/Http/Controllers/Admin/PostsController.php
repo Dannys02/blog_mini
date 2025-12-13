@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
@@ -14,16 +15,16 @@ class PostsController extends Controller
     $posts = Post::all();
     return view("App", compact("posts"));
   }
-  
+
   public function index()
   {
     $posts = Post::all();
-    return view("pages.postsIndex", compact("posts"));
+    return view("pages-admin.postsIndex", compact("posts"));
   }
 
   public function create()
   {
-    return view("pages.postsCreate");
+    return view("pages-admin.postsCreate");
   }
 
   public function store(Request $request)
@@ -40,11 +41,10 @@ class PostsController extends Controller
       ]
     );
 
-    DB::table("posts")->insert([
+    Post::create([
       "title" => $posts["title"],
       "content" => $posts["content"],
-      "created_at" => now(),
-      "updated_at" => now(),
+      "user_id" => null, // ADMIN
     ]);
 
     return redirect("/admin/post/index");
@@ -53,19 +53,19 @@ class PostsController extends Controller
   public function show(string $id)
   {
     $posts = Post::find($id);
-    return view("pages.postsShow", compact("posts"));
+    return view("pages-admin.postsShow", compact("posts"));
   }
 
   public function komentar(string $id)
   {
     $posts = Post::find($id);
-    return view("pages.comment", compact("posts"));
+    return view("pages-admin.comment", compact("posts"));
   }
 
   public function edit(string $id)
   {
     $posts = Post::find($id);
-    return view("pages.postsEdit", compact("posts"));
+    return view("pages-admin.postsEdit", compact("posts"));
   }
 
   public function update(Request $request, string $id)

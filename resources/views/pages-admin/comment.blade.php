@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gray-50 flex h-screen font-sans">
-  @include('components.sidebar')
+  @include('components-admin.sidebar')
 
   <div class="flex-1 flex flex-col overflow-hidden">
 
-    @include('components.header')
+    @include('components-admin.header')
 
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
 
@@ -215,7 +215,7 @@
 
     </main>
 
-    @include('components.footer')
+    @include('components-admin.footer')
 
   </div>
 

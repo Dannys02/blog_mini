@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <title>Detail Post: {{ $posts->title }}</title>
+  <title>Judul: {{ $posts->title }}</title>
 </head>
 <body class="bg-gray-100 min-h-screen p-8 md:p-12 font-sans text-gray-800">
 
