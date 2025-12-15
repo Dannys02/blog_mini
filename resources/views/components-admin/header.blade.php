@@ -3,9 +3,7 @@
   <div class="flex items-center">
     <button type="button" id="btnNav" class="md:hidden text-gray-500 hover:text-indigo-600 focus:outline-none p-2 rounded-lg transition duration-150">
       <div class="space-y-1">
-        <span class="block w-6 h-1 bg-gray-600 rounded-2xl"></span>
-        <span class="block w-6 h-1 bg-gray-600 rounded-2xl"></span>
-        <span class="block w-6 h-1 bg-gray-600 rounded-2xl"></span>
+        <i class="fa fa-bars text-xl"></i>
       </div>
     </button>
     <h1 class="text-xl md:text-2xl font-bold text-gray-800 ml-4 md:ml-0">Dashboard Admin</h1>

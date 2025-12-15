@@ -108,7 +108,7 @@
             <div class="p-6 bg-white rounded-lg border border-indigo-200 shadow-md">
               <i class="fa fa-envelope text-3xl text-indigo-600 mb-3"></i>
               <h4 class="text-xl font-semibold text-gray-800">Email</h4>
-              <p class="text-gray-600 mt-1">dannys.martha.f@example.com</p>
+              <p class="text-gray-600 mt-1">komputerk858@gmail.com</p>
               <a href="mailto:dannys.martha.f@example.com" class="mt-3 inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800">
                 Kirim Pesan <i class="fa fa-arrow-right ml-1 text-xs"></i>
               </a>
@@ -135,7 +135,7 @@
   <div id="navbarPhone" class="md:hidden w-full fixed bottom-[-100%] flex flex-col p-6 bg-white shadow-[0_-5px_15px_rgba(0,0,0,0.1)] space-y-4 transition-all duration-300 ease-in-out z-[30] rounded-t-2xl">
     <h3 class="text-xl font-bold text-gray-900 text-center border-b pb-3 border-gray-200">Navigasi</h3>
     <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
-      <i class="fa fa-home text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Home
+      <i class="fa fa-home text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Beranda
     </a>
     <a href="#artikel" class="flex items-center px-4 py-3 text-gray-700 hover:text-white bg-white hover:bg-indigo-600 rounded-lg transition duration-300 font-medium group">
       <i class="fa fa-newspaper text-lg mr-3 text-indigo-500 group-hover:text-white transition-all w-5"></i> Artikel

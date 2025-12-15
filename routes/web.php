@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 use App\Http\Controllers\Admin\PostsController as AdminPostsController;
 use App\Http\Controllers\User\PostsController as UserPostsController;
@@ -10,7 +11,7 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\UserController;
 
-Route::get("/", [AdminPostsController::class, "App"]);
+Route::get("/", [Controller::class, "App"]);
 
 // USER AUTH
 Route::middleware("guest.user")->group(function () {
@@ -31,15 +32,15 @@ Route::middleware("guest.user")->group(function () {
 // USER DASHBOARD (LOGIN WAJIB)
 Route::middleware("auth.user")->group(function () {
   Route::get("/dashboard", [UserController::class, "index"]);
-  Route::get("/post/komentar/{id}", [AdminPostsController::class, "komentar"]);
+  Route::get("/post/komentar/{id}", [Controller::class, "komentar"]);
 
   // USER POSTS CRUD
-  Route::get("/user/post/index", [UserPostController::class, "index"]);
-  Route::get("/user/post/create", [UserPostController::class, "create"]);
-  Route::post("/user/post/store", [UserPostController::class, "store"]);
-  Route::get("/user/post/edit/{id}", [UserPostController::class, "edit"]);
-  Route::put("/user/post/update/{id}", [UserPostController::class, "update"]);
-  Route::delete("/user/post/delete/{id}", [UserPostController::class, "destroy",]);
+  Route::get("/user/post/index", [UserPostsController::class, "index"]);
+  Route::get("/user/post/create", [UserPostsController::class, "create"]);
+  Route::post("/user/post/store", [UserPostsController::class, "store"]);
+  Route::get("/user/post/edit/{id}", [UserPostsController::class, "edit"]);
+  Route::put("/user/post/update/{id}", [UserPostsController::class, "update"]);
+  Route::delete("/user/post/delete/{id}", [UserPostsController::class, "destroy",]);
 
   Route::post("/logout", [UserAuthController::class, "logout"]);
 });
@@ -57,7 +58,7 @@ Route::prefix("admin")->group(function () {
     Route::get("/comment-user", [DashboardController::class, "commentUser"]);
     Route::get("/list-user", [DashboardController::class, "showUser"]);
 
-    // POSTS CRUD
+    // POSTS ADMIN CRUD
     Route::get("/post/create", [AdminPostsController::class, "create"]);
     Route::post("/create/post", [AdminPostsController::class, "store"]);
     Route::get("/post/index", [AdminPostsController::class, "index"]);

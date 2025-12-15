@@ -9,7 +9,7 @@
       <div class="hidden md:flex md:items-center md:space-x-6">
 
         <ul class="flex items-center space-x-4">
-          <li><a href="/#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Home</a></li>
+          <li><a href="/#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Beranda</a></li>
           <li><a href="/#artikel" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Artikel</a></li>
           <li><a href="/#tentang" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Tentang</a></li>
           <li><a href="/#kontak" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150 ease-in-out">Kontak</a></li>

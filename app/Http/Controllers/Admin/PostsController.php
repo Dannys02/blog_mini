@@ -10,12 +10,6 @@ use Carbon\Carbon;
 
 class PostsController extends Controller
 {
-  public function App()
-  {
-    $posts = Post::all();
-    return view("App", compact("posts"));
-  }
-
   public function index()
   {
     $posts = Post::all();
@@ -54,12 +48,6 @@ class PostsController extends Controller
   {
     $posts = Post::find($id);
     return view("pages-admin.postsShow", compact("posts"));
-  }
-
-  public function komentar(string $id)
-  {
-    $posts = Post::find($id);
-    return view("pages-admin.comment", compact("posts"));
   }
 
   public function edit(string $id)
