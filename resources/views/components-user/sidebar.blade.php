@@ -20,19 +20,19 @@
   </div>
 
   <nav class="flex-grow p-4 space-y-2">
-    <a href="#" class="flex items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
+    <a href="/dashboard" class="flex items-center px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
       <i class="fa fa-columns w-5 mr-3"></i> Dashboard
     </a>
-    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
+    <a href="/user/post/create" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
       <i class="fa fa-feather-alt w-5 mr-3"></i> Buat Artikel
     </a>
-    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
+    <a href="/user/post/index" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
       <i class="fa fa-bookmark w-5 mr-3"></i> Koleksi Artikel
     </a>
     <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
       <i class="fa fa-user-circle w-5 mr-3"></i> Edit Profil
     </a>
-    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
+    <a href="/user/post/comment" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition duration-300">
       <i class="fa fa-comments w-5 mr-3"></i> Komentar Saya
     </a>
   </nav>

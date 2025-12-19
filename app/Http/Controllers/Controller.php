@@ -8,7 +8,7 @@ class Controller extends \Illuminate\Routing\Controller
 {
   public function App()
   {
-    $posts = Post::all();
+    $posts = Post::paginate(2);
     return view("App", compact("posts"));
   }
 

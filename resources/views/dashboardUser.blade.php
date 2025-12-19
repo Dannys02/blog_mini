@@ -42,7 +42,7 @@
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Total Artikel</p>
-                <p class="text-3xl font-extrabold text-gray-900 mt-1">0</p> 
+                <p class="text-3xl font-extrabold text-gray-900 mt-1">{{ $posts->count() }}</p> 
               </div>
               <div class="text-indigo-500 bg-indigo-100 p-3 rounded-full">
                 <i class="fa fa-scroll text-xl"></i>
@@ -74,23 +74,12 @@
             </div>
           </div>
           
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-pink-500 hover:shadow-xl transition duration-300">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Total Dilihat</p>
-                <p class="text-3xl font-extrabold text-gray-900 mt-1">0</p>
-              </div>
-              <div class="text-pink-500 bg-pink-100 p-3 rounded-full">
-                <i class="fa fa-eye text-xl"></i>
-              </div>
-            </div>
-          </div>
         </div>
 
         <h3 class="text-2xl font-bold text-gray-800 mb-4 pt-4 border-t border-gray-200">Aksi Cepat</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <a href="/user/articles/create" class="bg-indigo-600 text-white p-6 rounded-xl shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-between">
+          <a href="/user/post/create" class="bg-indigo-600 text-white p-6 rounded-xl shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-between">
             <div>
               <p class="text-xl font-bold">Tulis Artikel Baru</p>
               <p class="text-sm text-indigo-200">Mulai berbagi ide sekarang.</p>
@@ -98,15 +87,15 @@
             <i class="fa fa-pen-square text-3xl opacity-75"></i>
           </a>
           
-          <a href="/user/articles" class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-between">
+          <a href="/user/post/index" class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-between">
             <div>
               <p class="text-xl font-bold text-gray-800">Kelola Artikel</p>
-              <p class="text-sm text-gray-500">Edit, hapus, dan publikasikan.</p>
+              <p class="text-sm text-gray-500">Edit, hapus, dan lihat detailnya.</p>
             </div>
             <i class="fa fa-book-open text-3xl text-indigo-500 opacity-75"></i>
           </a>
           
-          <a href="/user/profile" class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-between">
+          <a href="#" class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-between">
             <div>
               <p class="text-xl font-bold text-gray-800">Pengaturan Akun</p>
               <p class="text-sm text-gray-500">Ganti nama, email, atau password.</p>

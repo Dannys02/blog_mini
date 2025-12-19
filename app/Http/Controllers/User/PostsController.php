@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,7 @@ class PostsController extends Controller
    */
   public function index()
   {
-    $posts = Post::where("user_id", auth()->id())
+    $posts = Post::where("user_id", Auth::guard("user")->id())
       ->latest()
       ->get();
 
@@ -48,7 +49,7 @@ class PostsController extends Controller
     Post::create([
       "title" => $validated["title"],
       "content" => $validated["content"],
-      "user_id" => auth()->id(), // 🔑 KUNCI KEAMANAN
+      "user_id" => Auth::guard('user')->id(), // 🔑 KUNCI KEAMANAN
     ]);
 
     return redirect("/user/post/index");
@@ -60,7 +61,7 @@ class PostsController extends Controller
   public function edit($id)
   {
     $posts = Post::where("id", $id)
-      ->where("user_id", auth()->id())
+      ->where("user_id", Auth::guard("user")->id())
       ->firstOrFail();
 
     return view("pages-user.postsEdit", compact("posts"));
@@ -72,7 +73,7 @@ class PostsController extends Controller
   public function update(Request $request, $id)
   {
     $posts = Post::where("id", $id)
-      ->where("user_id", auth()->id())
+      ->where("user_id", Auth::guard("user")->id())
       ->firstOrFail();
 
     $validated = $request->validate(
@@ -98,7 +99,7 @@ class PostsController extends Controller
   public function destroy($id)
   {
     $posts = Post::where("id", $id)
-      ->where("user_id", auth()->id())
+      ->where("user_id", Auth::guard("user")->id())
       ->firstOrFail();
 
     $posts->delete();

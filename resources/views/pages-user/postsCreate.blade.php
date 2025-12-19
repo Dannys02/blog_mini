@@ -11,11 +11,11 @@
 
       <div class="mb-6 border-b border-gray-300 pb-4">
         <h1 class="text-black text-2xl font-extrabold tracking-tight text-center">
-          Buat Postingan Baru
+          Ayo buat postingan baru, {{ Auth::guard('user')->user()->name }}
         </h1>
       </div>
 
-      <form action="/admin/create/post" method="post">
+      <form action="/user/post/store" method="post">
         @csrf
 
         <div class="mb-4">
@@ -53,21 +53,16 @@
           >
           Kirim Post
         </button>
-        <button onClick="window.history.back"
-          id="index"
+        <a
+          href="{{ url()->previous() }}"
           type="button"
           class="py-2 px-4 bg-blue-500 hover:bg-indigo-600 rounded-lg text-white font-semibold transition duration-200 shadow-md"
           >
            Kembali
-        </button>
+        </a>
       </div>
     </form>
   </div>
   </div>
-<script>
-  document.getElementById("index").addEventListener("click", () => {
-    window.location.href = "/admin/post/index";
-  });
-</script>
 </body>
 </html>
