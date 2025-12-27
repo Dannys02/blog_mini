@@ -2,9 +2,9 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
 
-      <a href="#" class="flex-shrink-0 text-xl font-bold text-gray-800 tracking-wider">
-        Dannys
-      </a>
+      <div class="h-12 w-12 flex-shrink-0 tracking-wider">
+        <img class="object-cover" src="{{ asset('../logo-me.png') }}" />
+      </div>
 
       <div class="hidden md:flex md:items-center md:space-x-6">
 

@@ -8,13 +8,13 @@ class Controller extends \Illuminate\Routing\Controller
 {
   public function App()
   {
-    $posts = Post::paginate(2);
+    $posts = Post::all();
     return view("App", compact("posts"));
   }
 
   public function komentar(string $id)
   {
     $posts = Post::find($id);
-    return view("pages-admin.comment", compact("posts"));
+    return view("components-app.comment", compact("posts"));
   }
 }

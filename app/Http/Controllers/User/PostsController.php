@@ -49,10 +49,19 @@ class PostsController extends Controller
     Post::create([
       "title" => $validated["title"],
       "content" => $validated["content"],
-      "user_id" => Auth::guard('user')->id(), // 🔑 KUNCI KEAMANAN
+      "user_id" => Auth::guard("user")->id(), // 🔑 KUNCI KEAMANAN
     ]);
 
     return redirect("/user/post/index");
+  }
+
+  public function show($id)
+  {
+    $posts = Post::where("id", $id)
+      ->where("user_id", Auth::guard("user")->id())
+      ->firstOrFail();
+    
+    return view("pages-user.postsShow", compact("posts"));
   }
 
   /**

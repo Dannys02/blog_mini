@@ -38,6 +38,7 @@ Route::middleware("auth.user")->group(function () {
   Route::get("/user/post/index", [UserPostsController::class, "index"]);
   Route::get("/user/post/create", [UserPostsController::class, "create"]);
   Route::post("/user/post/store", [UserPostsController::class, "store"]);
+  Route::get("/user/post/show/{id}", [UserPostsController::class, "show"]);
   Route::get("/user/post/edit/{id}", [UserPostsController::class, "edit"]);
   Route::put("/user/post/update/{id}", [UserPostsController::class, "update"]);
   Route::delete("/user/post/delete/{id}", [UserPostsController::class, "destroy",]);

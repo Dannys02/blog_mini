@@ -74,42 +74,14 @@
             </div>
           </div>
           @empty
-          <div class="md:col-span-3 text-center py-12 bg-gray-50 rounded-lg border-dashed border-2 border-gray-300">
-            <i class="fa fa-exclamation-circle text-4xl text-gray-400 mb-3"></i>
-            <p class="text-lg text-gray-500 font-medium">
+          <div class="md:col-span-3 text-center py-12 bg-indigo-50 rounded-lg
+          border-dashed border-2 border-indigo-300">
+            <i class="fa fa-exclamation-circle text-4xl text-indigo-400 mb-3"></i>
+            <p class="text-lg text-indigo-500 font-medium">
               Artikel tidak tersedia saat ini.
             </p>
           </div>
           @endforelse
-        </div>
-        
-        <div class="flex items-center justify-center space-x-2 mt-8">
-          {{-- Tombol Previous --}}
-          @if ($posts->onFirstPage())
-          <span class="px-4 py-2 text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed text-sm font-bold">Prev</span>
-          @else
-          <a href="{{ $posts->previousPageUrl() }}" class="px-4 py-2 bg-white border border-indigo-100 text-indigo-600 rounded-lg hover:bg-indigo-50 transition shadow-sm text-sm font-bold">Prev</a>
-          @endif
-
-          {{-- Looping Angka Halaman --}}
-          <div class="flex space-x-1">
-            @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
-            @if ($page == $posts->currentPage())
-            {{-- Angka Aktif --}}
-            <span class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md shadow-indigo-200 text-sm font-bold">{{ $page }}</span>
-            @else
-            {{-- Angka Biasa --}}
-            <a href="{{ $url }}" class="px-4 py-2 bg-white border border-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-50 hover:border-indigo-200 transition text-sm font-medium">{{ $page }}</a>
-            @endif
-            @endforeach
-          </div>
-
-          {{-- Tombol Next --}}
-          @if ($posts->hasMorePages())
-          <a href="{{ $posts->nextPageUrl() }}" class="px-4 py-2 bg-white border border-indigo-100 text-indigo-600 rounded-lg hover:bg-indigo-50 transition shadow-sm text-sm font-bold">Next</a>
-          @else
-          <span class="px-4 py-2 text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed text-sm font-bold">Next</span>
-          @endif
         </div>
         
       </div>
